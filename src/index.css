@@ -1,0 +1,327 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: rgb(245, 245, 255);
+  --foreground: rgb(42, 42, 74);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(42, 42, 74);
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(42, 42, 74);
+  --primary: rgb(110, 86, 207);
+  --primary-foreground: rgb(255, 255, 255);
+  --secondary: rgb(228, 223, 255);
+  --secondary-foreground: rgb(74, 64, 128);
+  --muted: rgb(240, 240, 250);
+  --muted-foreground: rgb(108, 108, 138);
+  --accent: rgb(216, 230, 255);
+  --accent-foreground: rgb(42, 42, 74);
+  --destructive: rgb(255, 84, 112);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border: rgb(224, 224, 240);
+  --input: rgb(224, 224, 240);
+  --ring: rgb(110, 86, 207);
+  --chart-1: rgb(110, 86, 207);
+  --chart-2: rgb(158, 140, 252);
+  --chart-3: rgb(93, 95, 239);
+  --chart-4: rgb(124, 117, 250);
+  --chart-5: rgb(71, 64, 179);
+  --sidebar: rgb(240, 240, 250);
+  --sidebar-foreground: rgb(42, 42, 74);
+  --sidebar-primary: rgb(110, 86, 207);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(216, 230, 255);
+  --sidebar-accent-foreground: rgb(42, 42, 74);
+  --sidebar-border: rgb(224, 224, 240);
+  --sidebar-ring: rgb(110, 86, 207);
+  --font-sans: Inter, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: JetBrains Mono, monospace;
+  --radius: 0.5rem;
+  --shadow-x: 0px;
+  --shadow-y: 4px;
+  --shadow-blur: 10px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.12;
+  --shadow-color: hsl(240 30% 25%);
+  --shadow-2xs: 0px 4px 10px 0px hsl(240 30% 25% / 0.06);
+  --shadow-xs: 0px 4px 10px 0px hsl(240 30% 25% / 0.06);
+  --shadow-sm: 0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 1px 2px -1px hsl(240 30% 25% / 0.12);
+  --shadow: 0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 1px 2px -1px hsl(240 30% 25% / 0.12);
+  --shadow-md: 0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 2px 4px -1px hsl(240 30% 25% / 0.12);
+  --shadow-lg: 0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 4px 6px -1px hsl(240 30% 25% / 0.12);
+  --shadow-xl: 0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 8px 10px -1px hsl(240 30% 25% / 0.12);
+  --shadow-2xl: 0px 4px 10px 0px hsl(240 30% 25% / 0.30);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  --background: rgb(15, 15, 26);
+  --foreground: rgb(226, 226, 245);
+  --card: rgb(26, 26, 46);
+  --card-foreground: rgb(226, 226, 245);
+  --popover: rgb(26, 26, 46);
+  --popover-foreground: rgb(226, 226, 245);
+  --primary: rgb(164, 143, 255);
+  --primary-foreground: rgb(15, 15, 26);
+  --secondary: rgb(45, 43, 85);
+  --secondary-foreground: rgb(196, 194, 255);
+  --muted: rgb(34, 34, 68);
+  --muted-foreground: rgb(160, 160, 192);
+  --accent: rgb(48, 48, 96);
+  --accent-foreground: rgb(226, 226, 245);
+  --destructive: rgb(255, 84, 112);
+  --destructive-foreground: rgb(255, 255, 255);
+  --border: rgb(48, 48, 82);
+  --input: rgb(48, 48, 82);
+  --ring: rgb(164, 143, 255);
+  --chart-1: rgb(164, 143, 255);
+  --chart-2: rgb(121, 134, 203);
+  --chart-3: rgb(100, 181, 246);
+  --chart-4: rgb(77, 182, 172);
+  --chart-5: rgb(255, 121, 198);
+  --sidebar: rgb(26, 26, 46);
+  --sidebar-foreground: rgb(226, 226, 245);
+  --sidebar-primary: rgb(164, 143, 255);
+  --sidebar-primary-foreground: rgb(15, 15, 26);
+  --sidebar-accent: rgb(48, 48, 96);
+  --sidebar-accent-foreground: rgb(226, 226, 245);
+  --sidebar-border: rgb(48, 48, 82);
+  --sidebar-ring: rgb(164, 143, 255);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+  /* Reset h1/h2 so pages control their own typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+  }
+}
+
+/* ===================== TYPOGRAPHY UTILITIES ===================== */
+@layer utilities {
+  .page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    color: var(--foreground);
+  }
+  .page-subtitle {
+    font-size: 0.875rem;
+    color: var(--muted-foreground);
+    margin-top: 4px;
+  }
+  .section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+  .card-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--foreground);
+  }
+  .form-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--foreground);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .body-text {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--foreground);
+  }
+}
+
+/* ===================== COMPONENTS ===================== */
+@layer components {
+  /* --- Buttons --- */
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    @apply font-medium py-2 px-5 rounded-lg
+           transition-all duration-200 shadow-sm
+           hover:opacity-90 hover:shadow-md
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none;
+  }
+  .btn-secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+    @apply font-medium py-2 px-5 rounded-lg
+           border border-border transition-all duration-200
+           hover:bg-muted active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply border border-input bg-transparent text-foreground
+           hover:bg-accent hover:text-accent-foreground
+           font-medium py-2 px-5 rounded-lg transition-all duration-200
+           active:scale-[0.98];
+  }
+
+  /* --- Cards --- */
+  .card {
+    @apply bg-card text-card-foreground rounded-xl border border-border p-6;
+    box-shadow: var(--shadow);
+  }
+  .card-hover {
+    @apply transition-all duration-200;
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.10);
+    border-color: color-mix(in srgb, var(--primary) 20%, var(--border));
+  }
+
+  /* --- Inputs --- */
+  .input {
+    @apply w-full border border-[#E2E8F0] bg-white rounded-xl px-4 py-3.5 text-foreground text-sm
+           focus:outline-none focus:border-[var(--primary)]
+           transition-all duration-300 shadow-sm
+           hover:border-gray-300
+           placeholder:text-gray-400 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .input:focus {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 10%, transparent), var(--shadow);
+  }
+
+  /* --- Badges --- */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-emerald-50 text-emerald-700;
+    border: 1px solid #a7f3d0;
+  }
+  .badge-warning {
+    @apply badge bg-amber-50 text-amber-700;
+    border: 1px solid #fde68a;
+  }
+  .badge-error {
+    @apply badge bg-red-50 text-red-700;
+    border: 1px solid #fecaca;
+  }
+  .badge-info {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+    color: var(--primary);
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
+    @apply badge;
+  }
+  .badge-secondary {
+    @apply badge bg-secondary text-secondary-foreground border border-border;
+  }
+
+  /* --- Sidebar Links --- */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg
+           font-medium transition-all duration-150 cursor-pointer text-sm;
+    color: var(--muted-foreground);
+    border-left: 2px solid transparent;
+  }
+  .sidebar-link:hover {
+    background: var(--sidebar-accent);
+    color: var(--foreground);
+  }
+  .sidebar-link.active {
+    background-color: color-mix(in srgb, var(--primary) 8%, transparent);
+    color: var(--primary);
+    border-left-color: var(--primary);
+    font-weight: 600;
+  }
+  .sidebar-link.active svg {
+    color: var(--primary);
+  }
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes progressCircle {
+  from { stroke-dashoffset: 314; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-page-enter {
+  animation: page-enter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Staggered children */
+.stagger-children > * {
+  opacity: 0;
+  animation: page-enter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+
+.page-enter {
+  animation: page-enter 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--muted) 25%,
+    color-mix(in srgb, var(--muted) 60%, white) 50%,
+    var(--muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius);
+}
+
+/* ===================== FOCUS RING ===================== */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--radius);
+}
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
+
+/* ===================== BUTTON PRESS ===================== */
+button:active:not(:disabled) {
+  transition: transform 100ms ease;
+}
+
+/* ===================== LINKS ===================== */
+a.text-primary:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
