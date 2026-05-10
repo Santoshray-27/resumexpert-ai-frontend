@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
   // ========================
   const logout = useCallback(() => {
     clearAuth();
-    window.location.href = '/login';
+    window.location.href = '/';
   }, []);
 
   // ========================

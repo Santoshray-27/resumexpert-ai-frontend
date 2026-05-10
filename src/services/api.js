@@ -43,7 +43,7 @@ api.interceptors.response.use(
       if (currentPath !== '/login' && currentPath !== '/register' && currentPath !== '/') {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        window.location.href = '/login';
+        window.location.href = '/';
       }
     }
     return Promise.reject(error);
