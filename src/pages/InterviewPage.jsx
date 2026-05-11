@@ -85,12 +85,12 @@ const InterviewPage = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-6 stagger-children">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="page-title">Interview Preparation</h1>
-          <p className="page-subtitle">Practice with AI-generated questions and get instant feedback</p>
+          <h2 className="text-2xl font-black text-gray-900">AI Mock Interview</h2>
+          <p className="text-gray-500 text-sm mt-1">Practice with our AI recruiter to sharpen your skills</p>
         </div>
-        <button onClick={() => setShowForm(!showForm)} className="btn-primary flex items-center gap-2">
+        <button onClick={() => setShowForm(!showForm)} className="btn-primary flex items-center justify-center gap-2">
           {showForm ? <><X size={18} /> Cancel</> : <><Plus size={18} /> New Session</>}
         </button>
       </div>
@@ -101,7 +101,7 @@ const InterviewPage = () => {
           <div className="flex items-center gap-2 mb-5">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center"
                  style={{ background: 'color-mix(in srgb, var(--primary) 10%, transparent)' }}>
-              <MessageSquare size={16} style={{ color: 'var(--primary)' }} />
+              <MessageSquare size={18} style={{ color: 'var(--primary)' }} />
             </div>
             <h3 className="section-title">Setup Interview Session</h3>
           </div>
@@ -163,7 +163,7 @@ const InterviewPage = () => {
               <button type="submit" disabled={creating} className="btn-primary flex items-center gap-2">
                 {creating
                   ? <><Loader size={16} className="animate-spin" /> Generating Questions...</>
-                  : <><MessageSquare size={16} /> Start Interview</>
+                  : <><MessageSquare size={18} /> Start Interview</>
                 }
               </button>
               <button type="button" onClick={() => setShowForm(false)} className="btn-secondary">Cancel</button>
@@ -173,7 +173,7 @@ const InterviewPage = () => {
       )}
 
       {/* Feature Cards — always visible */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {features.map(feature => (
           <div key={feature.title} className="card card-hover text-center" style={{ padding: '1.5rem' }}>
             <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
@@ -195,7 +195,7 @@ const InterviewPage = () => {
                  style={{ background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)' }} />
             <div className="relative w-24 h-24 rounded-full flex items-center justify-center"
                  style={{ background: 'color-mix(in srgb, var(--primary) 10%, var(--muted))' }}>
-              <MessageSquare size={40} style={{ color: 'var(--primary)' }} className="opacity-70" />
+              <MessageSquare size={22} style={{ color: 'var(--primary)' }} className="opacity-70" />
             </div>
           </div>
           <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>No Sessions Yet</h3>
@@ -242,22 +242,22 @@ const InterviewPage = () => {
 
                   <div className="flex items-center gap-4 text-xs mb-3" style={{ color: 'var(--muted-foreground)' }}>
                     <span className="flex items-center gap-1">
-                      <MessageSquare size={12} /> {session.totalQuestions} questions
+                      <MessageSquare size={18} /> {session.totalQuestions} questions
                     </span>
                     {session.overallScore != null && (
                       <span className="flex items-center gap-1">
-                        <Award size={12} className="text-amber-500" /> {session.overallScore}/100
+                        <Award size={18} className="text-amber-500" /> {session.overallScore}/100
                       </span>
                     )}
                     <span className="flex items-center gap-1">
-                      <Clock size={12} /> {new Date(session.createdAt).toLocaleDateString()}
+                      <Clock size={18} /> {new Date(session.createdAt).toLocaleDateString()}
                     </span>
                   </div>
 
                   {session.status === 'completed' && (
                     <div className="flex items-center gap-1.5 text-xs font-medium"
                          style={{ color: 'oklch(0.45 0.14 145)' }}>
-                      <CheckCircle size={13} /> Completed · Score: {session.overallScore}/100
+                      <CheckCircle size={18} /> Completed · Score: {session.overallScore}/100
                     </div>
                   )}
                   {session.status === 'in-progress' && (
@@ -272,7 +272,7 @@ const InterviewPage = () => {
                     </div>
                   )}
 
-                  <ChevronRight size={16} className="mt-3 ml-auto group-hover:translate-x-0.5 transition-transform"
+                  <ChevronRight size={18} className="mt-3 ml-auto group-hover:translate-x-0.5 transition-transform"
                                 style={{ color: 'var(--muted-foreground)' }} />
                 </button>
               );

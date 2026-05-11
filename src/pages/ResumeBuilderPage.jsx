@@ -285,7 +285,7 @@ const SkillsInput = ({ skills, onChange }) => {
           <span key={index} className="badge-info h-7 flex items-center gap-1 animate-page-enter" style={{ animationDelay: `${index * 50}ms` }}>
             {skill}
             <button onClick={(e) => { e.stopPropagation(); removeSkill(index); }} className="hover:bg-primary/20 rounded-full p-0.5 transition-colors">
-              <X size={12} />
+              <X size={18} />
             </button>
           </span>
         ))}
@@ -309,7 +309,7 @@ const SkillsInput = ({ skills, onChange }) => {
               onClick={() => addSkills(s)}
               className="text-[11px] px-2 py-1 rounded-md border border-border hover:border-primary hover:text-primary transition-colors flex items-center gap-1"
             >
-              <Plus size={10} /> {s}
+              <Plus size={18} /> {s}
             </button>
           ))}
         </div>
@@ -349,18 +349,18 @@ const ResumeBuilderPage = () => {
 
   return (
     <div className="space-y-6 stagger-children">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="page-title">Resume Builder</h1>
           <p className="page-subtitle">Build a professional resume with AI-powered templates</p>
         </div>
-        <button onClick={downloadPDF} className="btn-primary flex items-center gap-2 shadow-sm">
+        <button onClick={downloadPDF} className="btn-primary flex items-center justify-center gap-2 shadow-sm w-full sm:w-auto">
           <Download size={18} /> Download PDF
         </button>
       </div>
 
       {/* Template Selector */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {TEMPLATES.map((t) => (
           <button key={t.id} onClick={() => setTemplate(t.id)}
             className="relative p-1 rounded-xl border-2 transition-all duration-200 text-left"
@@ -381,7 +381,7 @@ const ResumeBuilderPage = () => {
               {template === t.id && (
                 <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
                      style={{ background: 'var(--primary)' }}>
-                  <Check size={11} className="text-white" />
+                  <Check size={18} className="text-white" />
                 </div>
               )}
             </div>
@@ -445,7 +445,7 @@ const ResumeBuilderPage = () => {
                 <h3 className="section-title">Experience</h3>
                 <button onClick={() => update('experience', [...data.experience, { role: '', company: '', duration: '', desc: '' }])}
                   className="text-[var(--primary)] hover:underline text-sm font-medium flex items-center gap-1">
-                  <Plus size={14} /> Add
+                  <Plus size={18} /> Add
                 </button>
               </div>
               
@@ -455,7 +455,7 @@ const ResumeBuilderPage = () => {
                     onClick={() => update('experience', data.experience.filter((_, idx) => idx !== i))}
                     className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <X size={14} />
+                    <X size={18} />
                   </button>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
@@ -488,7 +488,7 @@ const ResumeBuilderPage = () => {
                 <h3 className="section-title">Education</h3>
                 <button onClick={() => update('education', [...data.education, { degree: '', school: '', year: '' }])}
                   className="text-[var(--primary)] hover:underline text-sm font-medium flex items-center gap-1">
-                  <Plus size={14} /> Add
+                  <Plus size={18} /> Add
                 </button>
               </div>
 
@@ -498,7 +498,7 @@ const ResumeBuilderPage = () => {
                     onClick={() => update('education', data.education.filter((_, idx) => idx !== i))}
                     className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <X size={14} />
+                    <X size={18} />
                   </button>
                   <div>
                     <label className="text-[10px] uppercase font-bold text-gray-400 ml-1">Degree</label>
@@ -535,7 +535,7 @@ const ResumeBuilderPage = () => {
               </div>
               <div className="flex justify-center mt-4">
                 <button onClick={downloadPDF} className="btn-secondary flex items-center gap-2">
-                  <Download size={16} /> Download PDF
+                  <Download size={18} /> Download PDF
                 </button>
               </div>
             </div>

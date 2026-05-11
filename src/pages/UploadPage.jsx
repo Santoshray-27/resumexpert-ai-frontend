@@ -88,7 +88,7 @@ const UploadPage = () => {
         <div className="card text-center p-12">
           <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 border"
                style={{ background: 'oklch(0.97 0.05 145)', borderColor: 'oklch(0.85 0.08 145)' }}>
-            <CheckCircle size={36} style={{ color: 'oklch(0.45 0.14 145)' }} />
+            <CheckCircle size={22} style={{ color: 'oklch(0.45 0.14 145)' }} />
           </div>
           <h2 className="page-title text-center mb-3">
             {result.analysis ? 'Analysis Complete' : 'Upload Successful'}
@@ -107,12 +107,12 @@ const UploadPage = () => {
               </div>
             </div>
           )}
-          <div className="flex gap-3 justify-center mt-6">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
             <button onClick={() => navigate('/analysis')} className="btn-primary px-6">
               View Detailed Report
             </button>
-            <button onClick={reset} className="btn-secondary flex items-center gap-2 px-6">
-              <RefreshCw size={16} /> Upload Another
+            <button onClick={reset} className="btn-secondary flex items-center gap-2 justify-center px-6">
+              <RefreshCw size={18} /> Upload Another
             </button>
           </div>
         </div>
@@ -177,14 +177,14 @@ const UploadPage = () => {
               className="p-2 rounded-lg transition-colors shrink-0 hover:bg-red-50 hover:text-red-600"
               style={{ color: 'var(--muted-foreground)' }}
             >
-              <X size={17} />
+              <X size={18} />
             </button>
           </div>
         ) : (
           <>
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-transform group-hover:scale-110"
                  style={{ background: 'color-mix(in srgb, var(--primary) 10%, transparent)' }}>
-              <Upload size={28} style={{ color: 'var(--primary)' }} />
+              <Upload size={22} style={{ color: 'var(--primary)' }} />
             </div>
             <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
               Drag &amp; drop your resume
@@ -240,8 +240,8 @@ const UploadPage = () => {
       <button
         onClick={handleSubmit}
         disabled={!file || uploadState !== 'idle'}
-        className="btn-primary w-full flex items-center justify-center gap-2 text-base font-semibold"
-        style={{ height: '3rem' }}
+        className="btn-primary w-full flex items-center justify-center gap-2 text-sm sm:text-base font-bold"
+        style={{ height: '3.5rem' }}
       >
         {uploadState === 'uploading' && <><Loader size={20} className="animate-spin" /> Uploading &amp; Parsing...</>}
         {uploadState === 'analyzing' && <><Loader size={20} className="animate-spin" /> Running AI Analysis...</>}
@@ -261,7 +261,7 @@ const UploadPage = () => {
           {tips.map((tip, i) => (
             <li key={i} className="flex items-start gap-2.5 text-sm"
                 style={{ color: 'oklch(0.40 0.08 85)' }}>
-              <Check size={15} className="mt-0.5 shrink-0" style={{ color: 'oklch(0.50 0.12 85)' }} />
+              <Check size={18} className="mt-0.5 shrink-0" style={{ color: 'oklch(0.50 0.12 85)' }} />
               {tip}
             </li>
           ))}

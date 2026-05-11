@@ -117,7 +117,7 @@ const InterviewSessionPage = () => {
       <div className="max-w-2xl mx-auto space-y-6">
         <div className="card text-center">
           <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <Award size={32} className="text-white" />
+            <Award size={22} className="text-white" />
           </div>
           <h2 className="text-2xl font-black text-gray-900 mb-2">Interview Complete!</h2>
           <p className="text-gray-500 mb-6">Here's your performance summary</p>
@@ -131,7 +131,7 @@ const InterviewSessionPage = () => {
               summary.readinessLevel === 'excellent' ? 'bg-green-100 text-green-700' :
               summary.readinessLevel === 'good' ? 'bg-blue-100 text-blue-700' : 'bg-yellow-100 text-yellow-700'
             }`}>
-              <CheckCircle size={16} /> {summary.readinessLevel?.replace('-', ' ').toUpperCase()}
+              <CheckCircle size={18} /> {summary.readinessLevel?.replace('-', ' ').toUpperCase()}
             </div>
           )}
 
@@ -185,12 +185,12 @@ const InterviewSessionPage = () => {
     <div className="max-w-3xl mx-auto space-y-4">
       {/* Header */}
       <div className="card">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-3">
           <div>
             <h2 className="font-black text-gray-900">{session.jobTitle}</h2>
             <p className="text-gray-500 text-sm">{session.company || 'Practice Session'} · {session.experienceLevel}</p>
           </div>
-          <div className="text-right">
+          <div className="sm:text-right flex items-center sm:block gap-2">
             <p className="text-sm font-semibold text-gray-900">
               {session.questions.filter(q => q.isAnswered).length} / {session.totalQuestions}
             </p>
@@ -292,13 +292,13 @@ const InterviewSessionPage = () => {
             <div className="flex gap-2">
               {currentQ < session.questions.length - 1 && (
                 <button onClick={nextQuestion} className="btn-primary flex items-center gap-2">
-                  Next Question <ChevronRight size={16} />
+                  Next Question <ChevronRight size={18} />
                 </button>
               )}
               {allAnswered && !completedData && (
                 <button onClick={completeSession} disabled={completing}
                   className="btn-primary bg-green-600 hover:bg-green-700 flex items-center gap-2">
-                  {completing ? <Loader size={16} className="animate-spin" /> : <Award size={16} />}
+                  {completing ? <Loader size={16} className="animate-spin" /> : <Award size={18} />}
                   Complete Interview
                 </button>
               )}
@@ -347,12 +347,12 @@ const InterviewSessionPage = () => {
                   disabled={submitting || !answer.trim()}
                   className="btn-primary flex items-center gap-2"
                 >
-                  {submitting ? <><Loader size={16} className="animate-spin" /> Evaluating...</> : <><Send size={16} /> Submit Answer</>}
+                  {submitting ? <><Loader size={16} className="animate-spin" /> Evaluating...</> : <><Send size={18} /> Submit Answer</>}
                 </button>
                 {currentQ > 0 && (
                   <button onClick={() => { setCurrentQ(currentQ - 1); setAnswer(''); }}
                     className="btn-secondary flex items-center gap-1">
-                    <ChevronLeft size={16} /> Prev
+                    <ChevronLeft size={18} /> Prev
                   </button>
                 )}
               </div>
@@ -370,7 +370,7 @@ const InterviewSessionPage = () => {
           </div>
           <button onClick={completeSession} disabled={completing}
             className="btn-primary bg-green-600 hover:bg-green-700 flex items-center gap-2">
-            {completing ? <Loader size={16} className="animate-spin" /> : <Award size={16} />}
+            {completing ? <Loader size={16} className="animate-spin" /> : <Award size={18} />}
             Get Final Score
           </button>
         </div>

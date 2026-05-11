@@ -102,7 +102,7 @@ const ScreeningPage = () => {
           <div className="card sticky top-24">
             <div className="flex items-center gap-2 mb-5">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: 'color-mix(in srgb, var(--primary) 10%, transparent)' }}>
-                <Shield size={16} style={{ color: 'var(--primary)' }} />
+                <Shield size={18} style={{ color: 'var(--primary)' }} />
               </div>
               <h3 className="section-title">Screen Configuration</h3>
             </div>
@@ -129,7 +129,7 @@ const ScreeningPage = () => {
                   </select>
                 ) : (
                   <div className="flex items-start gap-2 p-3 rounded-lg" style={{ background: 'oklch(0.98 0.04 85)', border: '1px solid oklch(0.88 0.07 85)' }}>
-                    <AlertTriangle size={15} className="mt-0.5 shrink-0" style={{ color: 'oklch(0.55 0.13 85)' }} />
+                    <AlertTriangle size={18} className="mt-0.5 shrink-0" style={{ color: 'oklch(0.55 0.13 85)' }} />
                     <div>
                       <p className="text-sm font-medium" style={{ color: 'oklch(0.35 0.08 85)' }}>No resumes uploaded yet</p>
                       <p className="text-xs mt-0.5" style={{ color: 'oklch(0.50 0.10 85)' }}>Upload a resume first for auto-detection.</p>
@@ -193,7 +193,7 @@ const ScreeningPage = () => {
               <div className="relative w-20 h-20 mx-auto mb-5">
                 <div className="absolute inset-0 rounded-full blur-2xl opacity-20" style={{ background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)' }} />
                 <div className="relative w-20 h-20 rounded-full flex items-center justify-center" style={{ background: 'color-mix(in srgb, var(--primary) 10%, var(--muted))' }}>
-                  <Shield size={32} style={{ color: 'var(--primary)' }} className="opacity-70" />
+                  <Shield size={22} style={{ color: 'var(--primary)' }} className="opacity-70" />
                 </div>
               </div>
               <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--foreground)' }}>Ready to Screen</h3>
@@ -220,17 +220,19 @@ const ScreeningPage = () => {
                 return (
                   <div className={`card border-2 ${v.border} relative overflow-hidden`}>
                     <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${v.gradient} opacity-5 rounded-full -translate-y-8 translate-x-8`} />
-                    <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                       <div className="flex items-center gap-4">
                         <div className={`w-14 h-14 rounded-2xl ${v.bg} flex items-center justify-center`}>
-                          <v.icon size={28} className={v.color} />
+                          <v.icon size={22} className={v.color} />
                         </div>
                         <div>
                           <p className="text-sm text-gray-500 font-medium">Screening Verdict</p>
                           <p className={`text-2xl font-black ${v.color}`}>{v.label}</p>
                         </div>
                       </div>
-                      <ScoreCircle score={result.matchScore || 0} size={100} strokeWidth={8} />
+                      <div className="flex justify-center">
+                        <ScoreCircle score={result.matchScore || 0} size={100} strokeWidth={8} />
+                      </div>
                     </div>
                     <p className="mt-4 text-gray-600 text-sm leading-relaxed bg-gray-50 p-4 rounded-xl">
                       {result.summary}
@@ -310,7 +312,7 @@ const ScreeningPage = () => {
                     <ul className="space-y-2">
                       {result.strengths.map((s, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                          <CheckCircle2 size={15} className="text-green-500 mt-0.5 flex-shrink-0" /> {s}
+                          <CheckCircle2 size={18} className="text-green-500 mt-0.5 flex-shrink-0" /> {s}
                         </li>
                       ))}
                     </ul>
@@ -324,7 +326,7 @@ const ScreeningPage = () => {
                     <ul className="space-y-2">
                       {result.redFlags.map((s, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                          <XCircle size={15} className="text-red-400 mt-0.5 flex-shrink-0" /> {s}
+                          <XCircle size={18} className="text-red-400 mt-0.5 flex-shrink-0" /> {s}
                         </li>
                       ))}
                     </ul>
@@ -338,7 +340,7 @@ const ScreeningPage = () => {
                   <h3 className="section-title mb-3 flex items-center gap-2">
                     <Users size={18} style={{ color: 'var(--primary)' }} /> Experience Match
                   </h3>
-                  <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                     <div className="rounded-xl p-4" style={{ background: 'color-mix(in srgb, var(--primary) 6%, var(--muted))' }}>
                       <p className="text-2xl font-black" style={{ color: 'var(--primary)' }}>{result.experienceMatch.requiredYears || '?'}</p>
                       <p className="text-xs text-gray-500 mt-1">Required Years</p>
@@ -368,7 +370,7 @@ const ScreeningPage = () => {
                       <div className="flex flex-wrap gap-2">
                         {result.interviewFocus.map((area, i) => (
                           <span key={i} className="bg-indigo-50 text-indigo-700 text-xs px-3 py-1.5 rounded-lg font-medium flex items-center gap-1">
-                            <ArrowRight size={12} /> {area}
+                            <ArrowRight size={18} /> {area}
                           </span>
                         ))}
                       </div>

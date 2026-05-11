@@ -48,9 +48,9 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="h-screen w-full bg-white flex overflow-hidden font-['Inter',_sans-serif]">
+    <div className="min-h-screen w-full bg-white flex overflow-hidden font-['Inter',_sans-serif]">
       {/* Left Side: Auth Form (60%) */}
-      <div className="w-full lg:w-[60%] flex flex-col p-8 md:p-12 relative overflow-y-auto">
+      <div className="w-full lg:w-[60%] flex flex-col p-6 sm:p-8 md:p-12 relative overflow-y-auto">
         {/* Logo Area */}
         <div className="mb-6">
           <Link to="/" className="flex items-center gap-3 group">
@@ -67,7 +67,7 @@ const RegisterPage = () => {
 
         {/* Center: Register Form */}
         <div className="flex-1 flex items-center justify-center py-6">
-          <div className="w-full max-w-[440px] flex flex-col items-center">
+          <div className="w-full max-w-[440px] flex flex-col items-center px-4 sm:px-0">
             <div className="w-full text-left mb-6">
               <h1 className="text-[36px] font-bold text-[var(--foreground)] tracking-tight leading-tight mb-1">Create Your Account</h1>
               <p className="text-[16px] font-normal text-[var(--muted-foreground)]">Join ResumeXpert AI to build a career that gets you hired.</p>
@@ -142,7 +142,7 @@ const RegisterPage = () => {
                 disabled={guestLoading || loading}
                 className="flex items-center gap-2 text-[14px] font-semibold text-gray-400 hover:text-[var(--foreground)] transition-colors py-1 px-4 rounded-lg hover:bg-gray-50"
               >
-                {guestLoading ? <Loader size={16} className="animate-spin" /> : <Users size={16} />}
+                {guestLoading ? <Loader size={16} className="animate-spin" /> : <Users size={18} />}
                 {guestLoading ? 'Opening Workspace...' : 'Explore as a Guest'}
               </button>
             </div>
@@ -179,21 +179,21 @@ const RegisterPage = () => {
                <div className="grid grid-cols-3 gap-3 mb-6">
                   <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100">
                     <div className="w-7 h-7 rounded-lg bg-[var(--primary)]/10 flex items-center justify-center mb-2">
-                      <BarChart3 size={14} className="text-[var(--primary)]" />
+                      <BarChart3 size={18} className="text-[var(--primary)]" />
                     </div>
                     <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Match</div>
                     <div className="text-lg font-bold text-gray-900 mt-0.5">94%</div>
                   </div>
                   <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100">
                     <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center mb-2">
-                      <Zap size={14} className="text-emerald-600" />
+                      <Zap size={18} className="text-emerald-600" />
                     </div>
                     <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Growth</div>
                     <div className="text-lg font-bold text-gray-900 mt-0.5">Top 1%</div>
                   </div>
                   <div className="p-3 rounded-2xl bg-gray-50 border border-gray-100">
                     <div className="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center mb-2">
-                      <FileText size={14} className="text-amber-600" />
+                      <FileText size={18} className="text-amber-600" />
                     </div>
                     <div className="text-[9px] font-bold text-gray-400 uppercase tracking-wider">Network</div>
                     <div className="text-lg font-bold text-gray-900 mt-0.5">500+</div>
@@ -201,9 +201,9 @@ const RegisterPage = () => {
                </div>
                <div className="space-y-3">
                  {[
-                   { role: "Senior Software Engineer", company: "Google", match: "98%", icon: <Zap size={14} className="text-amber-500" />, color: "bg-amber-50" },
-                   { role: "Product Designer", company: "Meta", match: "94%", icon: <Users size={14} className="text-blue-500" />, color: "bg-blue-50" },
-                   { role: "Data Scientist", company: "Amazon", match: "89%", icon: <BarChart3 size={14} className="text-emerald-500" />, color: "bg-emerald-50" },
+                   { role: "Senior Software Engineer", company: "Google", match: "98%", icon: <Zap size={18} className="text-amber-500" />, color: "bg-amber-50" },
+                   { role: "Product Designer", company: "Meta", match: "94%", icon: <Users size={18} className="text-blue-500" />, color: "bg-blue-50" },
+                   { role: "Data Scientist", company: "Amazon", match: "89%", icon: <BarChart3 size={18} className="text-emerald-500" />, color: "bg-emerald-50" },
                  ].map((item, i) => (
                    <div key={i} className="flex items-center justify-between p-3 rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm hover:translate-x-1 transition-transform cursor-default">
                      <div className="flex items-center gap-3">

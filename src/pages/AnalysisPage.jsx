@@ -16,6 +16,17 @@ import { RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip,
 import { Link } from 'react-router-dom';
 
 const AnalysisPage = () => {
+
+const getChartColors = () => ({
+  primary: '#644A40',
+  secondary: '#A18276',
+  success: '#059669',
+  warning: '#D97706',
+  danger: '#DC2626',
+  muted: '#A0A0A0',
+});
+const chartColors = getChartColors();
+
   const [analyses, setAnalyses] = useState([]);
   const [selected, setSelected] = useState(null);
   const [resumes, setResumes] = useState([]);
@@ -88,7 +99,7 @@ const AnalysisPage = () => {
       {/* Analyze a Resume — clean card */}
       <div className="card">
         <h3 className="section-title mb-4">Select a Resume to Analyze</h3>
-        <div className="flex gap-3">
+        <div className="flex flex-col sm:flex-row gap-3">
           <select
             className="input flex-1"
             value={selectedResumeId}
@@ -102,18 +113,18 @@ const AnalysisPage = () => {
           <button
             onClick={runAnalysis}
             disabled={analyzing || !selectedResumeId}
-            className="btn-primary flex items-center gap-2 whitespace-nowrap px-6"
+            className="btn-primary flex items-center gap-2 whitespace-nowrap px-6 justify-center"
           >
             {analyzing
               ? <><Loader size={16} className="animate-spin" /> Analyzing...</>
-              : <><BarChart3 size={16} /> Analyze</>
+              : <><BarChart3 size={18} /> Analyze</>
             }
           </button>
         </div>
         {resumes.length === 0 && (
           <div className="flex items-center gap-2 mt-3 p-3 rounded-lg"
                style={{ background: 'oklch(0.98 0.04 85)', border: '1px solid oklch(0.88 0.07 85)' }}>
-            <AlertTriangle size={15} style={{ color: 'oklch(0.55 0.13 85)' }} />
+            <AlertTriangle size={18} style={{ color: 'oklch(0.55 0.13 85)' }} />
             <p className="text-sm" style={{ color: 'oklch(0.40 0.08 85)' }}>
               No resumes found.{' '}
               <Link to="/upload" className="font-medium underline-offset-2 hover:underline"
@@ -134,7 +145,7 @@ const AnalysisPage = () => {
                  style={{ background: 'radial-gradient(circle, var(--primary) 0%, transparent 70%)' }} />
             <div className="relative w-24 h-24 rounded-full flex items-center justify-center"
                  style={{ background: 'color-mix(in srgb, var(--primary) 10%, var(--muted))' }}>
-              <BarChart3 size={40} style={{ color: 'var(--primary)' }} className="opacity-70" />
+              <BarChart3 size={22} style={{ color: 'var(--primary)' }} className="opacity-70" />
             </div>
           </div>
           <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--foreground)' }}>No Analyses Yet</h3>
@@ -147,13 +158,13 @@ const AnalysisPage = () => {
             {['Takes less than 30 seconds', 'Scored across 5 dimensions', 'Actionable suggestions'].map(tip => (
               <span key={tip} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
                     style={{ background: 'var(--muted)', color: 'var(--muted-foreground)', border: '1px solid var(--border)' }}>
-                <CheckCircle size={12} style={{ color: 'var(--primary)' }} />
+                <CheckCircle size={18} style={{ color: 'var(--primary)' }} />
                 {tip}
               </span>
             ))}
           </div>
           <Link to="/upload" className="btn-primary inline-flex items-center gap-2 mt-8">
-            <Upload size={16} /> Upload Resume
+            <Upload size={18} /> Upload Resume
           </Link>
         </div>
       ) : (
@@ -194,7 +205,7 @@ const AnalysisPage = () => {
             <div className="lg:col-span-3 space-y-4">
               {/* Score Summary */}
               <div className="card">
-                <div className="flex items-center justify-between flex-wrap gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                   <div>
                     <h3 className="section-title">ATS Analysis Report</h3>
                     <p className="text-sm mt-0.5" style={{ color: 'var(--muted-foreground)' }}>
@@ -248,7 +259,7 @@ const AnalysisPage = () => {
                   <h4 className="section-title mb-4">Keyword Analysis</h4>
                   <div className="mb-4">
                     <p className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-                      <CheckCircle size={13} style={{ color: 'oklch(0.45 0.14 145)' }} />
+                      <CheckCircle size={18} style={{ color: 'oklch(0.45 0.14 145)' }} />
                       <span style={{ color: 'oklch(0.45 0.14 145)' }}>Found Keywords</span>
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -259,7 +270,7 @@ const AnalysisPage = () => {
                   </div>
                   <div>
                     <p className="text-xs font-semibold mb-2 flex items-center gap-1.5">
-                      <XCircle size={13} style={{ color: 'oklch(0.55 0.19 25)' }} />
+                      <XCircle size={18} style={{ color: 'oklch(0.55 0.19 25)' }} />
                       <span style={{ color: 'oklch(0.55 0.19 25)' }}>Missing Keywords</span>
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -280,25 +291,25 @@ const AnalysisPage = () => {
               ].map(({ key, label, items, icon: Icon, colorClass, bg, border }) => (
                 <div key={key} className="card">
                   <button
-                    className="flex items-center justify-between w-full"
+                    className="flex items-center justify-between w-full transition-all duration-200 active:scale-[0.97] hover:-translate-y-px"
                     onClick={() => toggle(key)}
                     aria-expanded={expanded[key]}
                   >
                     <h4 className="section-title flex items-center gap-2">
-                      <Icon size={16} className={colorClass} />
+                      <Icon size={18} className={colorClass} />
                       {label}
                       <span className="text-xs font-normal" style={{ color: 'var(--muted-foreground)' }}>
                         ({items?.length || 0})
                       </span>
                     </h4>
-                    {expanded[key] ? <ChevronUp size={17} /> : <ChevronDown size={17} />}
+                    {expanded[key] ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                   </button>
                   {(expanded[key] || true) && (
                     <ul className="mt-3 space-y-2">
                       {(items || []).map((item, i) => (
                         <li key={i} className="flex items-start gap-2.5 text-sm p-2.5 rounded-lg"
                             style={{ background: bg, border: `1px solid ${border}` }}>
-                          <Icon size={14} className={`${colorClass} mt-0.5 shrink-0`} />
+                          <Icon size={18} className={`${colorClass} mt-0.5 shrink-0`} />
                           <span style={{ color: 'var(--foreground)' }}>{item}</span>
                         </li>
                       ))}

@@ -31,7 +31,7 @@ const JobCard = ({ job, onBookmark }) => {
           {job.companyLogo ? (
             <img src={job.companyLogo} alt={job.company} className="w-full h-full object-contain" />
           ) : (
-            <Briefcase size={24} className="text-gray-400" />
+            <Briefcase size={22} className="text-gray-400" />
           )}
         </div>
         <div className="flex-1 min-w-0">
@@ -41,7 +41,7 @@ const JobCard = ({ job, onBookmark }) => {
           <div className="flex items-center gap-2 text-sm text-[var(--muted-foreground)] mt-1">
             <span className="font-medium text-[var(--foreground)]">{job.company}</span>
             <span>•</span>
-            <span className="flex items-center gap-1"><MapPin size={12}/> {job.location}</span>
+            <span className="flex items-center gap-1"><MapPin size={18}/> {job.location}</span>
           </div>
         </div>
         {/* Bookmark Action */}
@@ -57,15 +57,15 @@ const JobCard = ({ job, onBookmark }) => {
       <div className="flex flex-wrap gap-2 mb-4">
         {job.salary && (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-green-50 text-green-700 border border-green-200">
-            <DollarSign size={12}/> {job.salary}
+            <DollarSign size={18}/> {job.salary}
           </span>
         )}
         <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
-          <Clock size={12}/> {job.type}
+          <Clock size={18}/> {job.type}
         </span>
         {job.isRemote && (
           <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
-            <Globe size={12}/> Remote
+            <Globe size={18}/> Remote
           </span>
         )}
       </div>
@@ -94,7 +94,7 @@ const JobCard = ({ job, onBookmark }) => {
       {/* Missing Skills Warning */}
       {job.missingSkills?.length > 0 && (
         <div className="mt-auto mb-4 p-2.5 rounded-lg bg-orange-50 border border-orange-100 flex items-start gap-2">
-          <AlertCircle size={14} className="text-orange-500 mt-0.5 shrink-0" />
+          <AlertCircle size={18} className="text-orange-500 mt-0.5 shrink-0" />
           <p className="text-xs text-orange-800">
             <strong>Missing Skills:</strong> {job.missingSkills.join(', ')}. <span className="underline cursor-pointer opacity-80 hover:opacity-100">View courses</span>
           </p>
@@ -104,13 +104,13 @@ const JobCard = ({ job, onBookmark }) => {
       <div className={job.missingSkills?.length ? "mt-0" : "mt-auto"} />
 
       {/* Footer Info & CTA */}
-      <div className="flex items-center justify-between pt-4 border-t border-[var(--border)] mt-auto">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between pt-4 border-t border-[var(--border)] mt-auto gap-4">
+        <div className="flex items-center justify-between sm:justify-start gap-3 w-full sm:w-auto">
           <span className={`px-2 py-1 text-xs font-bold border rounded-md ${getMatchColor(job.matchScore)} flex items-center gap-1`}>
-            <Star size={10} className="fill-current" /> {job.matchScore}% Match
+            <Star size={18} className="fill-current" /> {job.matchScore}% Match
           </span>
           <span className="text-xs text-[var(--muted-foreground)]">
-            via {job.source} • {getDaysAgo(job.postedAt)}
+            {getDaysAgo(job.postedAt)}
           </span>
         </div>
         {job.applyUrl && job.applyUrl.startsWith('https://') ? (
@@ -118,17 +118,17 @@ const JobCard = ({ job, onBookmark }) => {
             href={job.applyUrl} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="btn-primary py-1.5 px-4 text-xs flex items-center gap-1 shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            className="btn-primary py-2 px-6 text-sm flex items-center gap-2 justify-center shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto"
           >
-            Apply <ExternalLink size={12} />
+            Apply Now <ExternalLink size={18} />
           </a>
         ) : (
           <button 
             disabled
-            className="btn-primary py-1.5 px-4 text-xs flex items-center gap-1 shadow-none opacity-50 cursor-not-allowed"
+            className="btn-primary py-2 px-6 text-sm flex items-center gap-2 justify-center shadow-none opacity-50 cursor-not-allowed w-full sm:w-auto"
             title="Application link is currently unavailable"
           >
-            Apply <ExternalLink size={12} />
+            Apply <ExternalLink size={18} />
           </button>
         )}
       </div>
@@ -244,7 +244,7 @@ const JobsPage = () => {
             disabled={parsingResume || !selectedResumeId}
             className="w-full py-2.5 px-4 bg-gradient-to-r from-[var(--primary)] to-blue-600 hover:opacity-90 text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 transition-all shadow-md disabled:opacity-50"
           >
-            {parsingResume ? <Loader size={16} className="animate-spin" /> : <FileText size={16} />}
+            {parsingResume ? <Loader size={16} className="animate-spin" /> : <FileText size={18} />}
             {parsingResume ? 'Analyzing Profile...' : 'Auto-Match Jobs'}
           </button>
         </div>
@@ -319,8 +319,8 @@ const JobsPage = () => {
       <div className="flex-1 flex flex-col gap-6 min-w-0">
         
         {/* Search Header */}
-        <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-2 shadow-sm flex flex-col sm:flex-row items-center relative z-10">
-          <div className="flex-1 flex items-center gap-3 px-4 py-2 w-full border-b sm:border-b-0 sm:border-r border-[var(--border)]">
+        <div className="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-2 shadow-sm flex flex-col sm:flex-row items-center relative z-10 gap-1 sm:gap-0">
+          <div className="flex-1 flex items-center gap-3 px-4 py-2.5 w-full border-b sm:border-b-0 sm:border-r border-[var(--border)]">
             <Search size={20} className="text-[var(--muted-foreground)]" />
             <input 
               type="text" 
@@ -331,7 +331,7 @@ const JobsPage = () => {
               onKeyDown={e => e.key === 'Enter' && handleSearch()}
             />
           </div>
-          <div className="flex-1 flex items-center gap-3 px-4 py-2 w-full">
+          <div className="flex-1 flex items-center gap-3 px-4 py-2.5 w-full">
             <MapPin size={20} className="text-[var(--muted-foreground)]" />
             <input 
               type="text" 
@@ -342,11 +342,11 @@ const JobsPage = () => {
               onKeyDown={e => e.key === 'Enter' && handleSearch()}
             />
           </div>
-          <div className="p-2 w-full sm:w-auto">
+          <div className="p-1 w-full sm:w-auto">
             <button 
               onClick={() => handleSearch()}
               disabled={loading}
-              className="w-full sm:w-auto bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-[var(--primary-foreground)] px-8 py-2.5 rounded-xl font-medium transition-all shadow-md shadow-[var(--primary)]/20 disabled:opacity-70 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto bg-[var(--primary)] hover:bg-[var(--primary)]/90 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-md shadow-[var(--primary)]/20 disabled:opacity-70 flex items-center justify-center gap-2"
             >
               {loading ? <Loader size={18} className="animate-spin" /> : 'Search'}
             </button>
@@ -390,7 +390,7 @@ const JobsPage = () => {
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center bg-[var(--card)] border border-[var(--border)] rounded-2xl border-dashed">
             <div className="w-16 h-16 bg-[var(--muted)] rounded-full flex items-center justify-center mb-4">
-              <Search size={32} className="text-[var(--muted-foreground)]" />
+              <Search size={22} className="text-[var(--muted-foreground)]" />
             </div>
             <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">No jobs found</h3>
             <p className="text-[var(--muted-foreground)] max-w-sm">
